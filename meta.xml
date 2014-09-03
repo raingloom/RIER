@@ -14,4 +14,5 @@
 	<!--tests-->
 	<script src="test.lua" type="client"/>
 	<script src="debug.lua" type="client"/>
+	<script src="debugEval.lua" type="client"/>
 </meta>

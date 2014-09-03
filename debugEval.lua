@@ -1,6 +1,6 @@
 --debug facilities
 local refreshFreq=true--refresh every n miliseconds or always (if set to true)
-local mainWindow=guiCreateWindow( 0.7, 0.3, 0.3, 0.7, "Rain's Interpolated Effects Renderer: pool debugger", true )
+local mainWindow=guiCreateWindow( 0.4, 0.3, 0.3, 0.4, "Rain's Interpolated Effects Renderer: eval debugger", true )
 local memo=guiCreateMemo( 0, 0.1, 1, 1, "", true, mainWindow)
 addEventHandler("onClientGUISize",mainWindow,
 	function ()
@@ -16,7 +16,7 @@ addEventHandler( "onClientPreRender", root,
 		last=last+delta
 		frames=frames+1
 		if refreshFreq==true or last>= refreshFreq then
-			guiSetText( memo, "avgDelta="..(delta/frames).."\nnumberOfEffects="..numberOfEffects.."\npoolDump:\n"..rprint(effectsInProgress,"  "))
+			guiSetText( memo, evalMemoText)
 			last,frames=0,0
 		end
 	end

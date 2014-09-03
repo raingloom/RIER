@@ -1,13 +1,15 @@
 local sx,sy=guiGetScreenSize()
-addEffectToPool ( "text2d",
+addEffectToPool ( "text3d",
 	{
-		3e3,
+		15e3,
 		0,
 		"Wow, some effect!",
-		{sx/2,-10,"\0",sx/2,sy/2,"\0",14},
-		nil,
-		nil,
-		nil,
-		8
+		{0,0,4,5,0,4,14,n=7},
+		0,0,0xffff0000,
+		{20,20,nil,40,40,nil,14,n=7},
+		"pricedown",
+		nil,nil,nil,nil,nil,nil,nil,
+		true,
+		n=15
 	}
 )

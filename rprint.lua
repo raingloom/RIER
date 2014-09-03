@@ -4,6 +4,7 @@ function rprint (t,tabchar,l)
 	tabchar=tabchar or "  "
 	local tab=(tabchar):rep(l)
 	for k,v in pairs(t) do
+		v=v=="\0" and nil or v
 		if type(v)=="table" then
 			ret=ret.."\n"..tab..tostring(k).."={\n"..rprint(v,tabchar,l+1).."\n"..tab.."}"
 		else
