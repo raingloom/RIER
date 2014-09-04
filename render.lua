@@ -8,6 +8,24 @@ if not fileExists( "log.txt" ) then
 end
 logfile=fileOpen( "log.txt" )
 
+function concatenateArglist( ... )
+	local ret,n,b={},0
+	for i=1,arg.n do
+		b=arg[i]
+		if type(b)=="table" then
+			for j=1,b.n or #b do
+				n=n+1
+				ret[n]=b[j]
+			end
+		else
+			n=n+1
+			ret[n]=b
+		end
+	end
+	ret.n=n
+	return ret
+end
+
 function print (...)
 	local s=""
 	for i=1,arg.n do
@@ -45,12 +63,13 @@ function effectRenderers.text3d ( effect, deltaTime )
 	local wx,wy,wz=unpack(res,4,6)
 	local sx,sy=getScreenFromWorldPosition(wx,wy,wz,1)
 	if sx then
-		scy=type(res[11])=="number" and res[11]
+		scx,scy=res[10],type(res[11])=="number" and res[11]
 		local dist=getDistanceBetweenPoints3D(wx,wy,wz,getCameraMatrix())
 		local q=(defdd-dist)/defdd
 		if q>0 then
-			local args=pack(res[3],sx,sy,res[7],res[8],res[9],res[10]*q,scy and scy*q or unpack(res,12,res.n), not scy and unpack(res,11,res.n))
-			evalMemoText=evalMemoText.."\n\n"..rprint(args)
+			--Build arglist
+			local args=concatenateArglist(res[3],sx,sy,{unpack(res,7,9)},scx and scx*q or q, scy and scy*q or {unpack(res,11,res.n)},scy and {unpack(res,12,res.n)})
+			evalMemoText=evalMemoText.."\n"..rprint(args)
 			dxDrawText(unpack(args,1,args.n))
 		end
 	end
