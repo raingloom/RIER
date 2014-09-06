@@ -1,0 +1,16 @@
+--Eval table usage
+{
+	--If any of the first three is 'nil', that argument is omitted.
+	--See examples.
+	startX,startY,startZ,
+	endX,endY,endZ,
+	easingFunctionID
+}
+
+--eg
+
+--Null Z
+{2.5,2.5,0,n=3} == evalProps({0,0,0,5,5,0,1},0.5)
+
+--Omitted Z
+{2.5,2.5,n=2} == evalProps({0,0,nil,5,5,0,1},0.5)

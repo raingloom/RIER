@@ -1,0 +1,11 @@
+A Multi Theft Auto resource, that aims to make animated DX effects simpler.
+Planned usage includes: rendering visual representation of sound effects, HUD, in-game tutorial instructions, pop-ups
+Currently in development.
+Original author: Rain Gloom
+
+See the /docs folder for more info on how to use the resource.
+
+TODO:
+Perspectival falloff based renderers
+Post GUI effects
+Layer manipulation

@@ -1,18 +1,6 @@
+<!--
+	For documents, see the online help (WIP) or the /docs folder.
+-->
 <meta>
 	<info name="Rain's Interpolated Effects Renderer" author="RainGloom" type="script" description="A 2D/3D interpolated effect renderer."/>
-	<!--Load enums and no in-resource dependency utils-->
-	<script src="enum_easingFunctions.lua" type="shared"/>
-	<script src="eval.lua" type="shared"/>
-	<script src="rprint.lua" type="shared"/>
-	
-	<!--Create effect pool-->
-	<script src="effectsPool.lua" type="client"/>
-	
-	<!--Load renderer-->
-	<script src="render.lua" type="client"/>
-	
-	<!--tests-->
-	<script src="test.lua" type="client"/>
-	<script src="debug.lua" type="client"/>
-	<script src="debugEval.lua" type="client"/>
 </meta>

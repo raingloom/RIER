@@ -15,7 +15,7 @@ function evalProps ( propList, progress )
 		if type(prop)=="table" then
 			sa,sb,sc=prop[1],prop[2],prop[3]
 			ta,tb,tc=prop[4],prop[5],prop[6]
-			a,b,c = interpolateBetween( sa or 0, sb or 0, sc or 0, ta or 0, tb or 0, tc or 0, progress, easingFunctions[prop[7]], unpack(prop,8,prop.n))
+			a,b,c = interpolateBetween( sa or 0, sb or 0, sc or 0, sa and ta or 0, sb and tb or 0, sc and tc or 0, progress, easingFunctions[prop[7]], unpack(prop,8,prop.n))
 			if sa~=nil then
 				ret[i]=a
 				i=i+1
@@ -37,10 +37,10 @@ function evalProps ( propList, progress )
 	return ret
 end
 
---cold test
+--unit test
 if not createElement then
 	easingFunctions={}
-	--only linear is supported for cold tests
+	--only linear is supported for unit tests
 	function interpolateBetween (x1,y1,z1,x2,y2,z2,progress)
 		rx,ry,rz=x2-x1,y2-y1,z2-z1
 		--progress=progress+1

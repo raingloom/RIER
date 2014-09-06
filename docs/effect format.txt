@@ -1,0 +1,35 @@
+--Proper effect format (best viewed in Lua syntax coloring)
+{
+	--Effect metadata.
+	[0]={
+		--How long the effect lasts.
+		--Note that the effect can take longer or shorter to finish, depending on the game speed and their local speed variable.
+		lengthInMiliseconds,
+		
+		--Used mostly internally. It keeps track of the progress the effect made.
+		--Can also be used to 'jump' the progress.
+		elapsedMiliseconds,
+		
+		--Name of the renderer to be used.
+		rendererID,
+		
+		--Opitional.
+		--When specified, changes the speed of the effect.
+		speed
+	},
+	--Actual effect data.
+
+	--The rest depends on the DX function used.
+	--For most arguments, you can use either what you would pass to the DX function used (see docs to find out which renderer uses which DX function), or an 'eval table'. See 'eval format.txt' for information.
+	--You can also use nil in most cases, to omit the argument and use the default one instead. Note that not all functions accept this. (eg.:dxDrawText does not accept nil for font)
+	--3D versions are also an exception. When using a 3D version, you must use 3D coordinates, where the DX function would normally use 2D ones. Note that this is only true for positioning, scaling is done in 2D.
+
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	--Optional but probably the most important one if you use 'nil's.
+	--'n' is used as an implicit length with 'unpack', a function that is used very often internally.
+	--This is necessary, because Lua does not handle 'nil's in arrays the way it should for this usage.
+
+	[n=numberOfArguments]
+
+	--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
